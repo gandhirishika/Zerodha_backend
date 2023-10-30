@@ -10,9 +10,7 @@ const corsOpts = {
     'POST',
   ],
 
-  allowedHeaders: [
-    'Content-Type',
-  ],
+  
 };
 
 app.use(cors(corsOpts));
@@ -32,8 +30,11 @@ app.get("/api/search", (req, res) => {
     period,
     data: generateMockData(),
   };
-
-  res.json(stockData);
+  res
+    .status(200)
+    .set("Content-Type", "application/json") // Set custom response headers here
+   
+    .json(stockData);
 });
 
 // Generate mock stock data function without faker
