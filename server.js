@@ -1,20 +1,21 @@
-// const express = require('express');
-// const app = express();
-
-// app.get("/api",(req,res)=>{
-// res.json({"users":["userOne","userTwo","userThree"]})
-// })
-
-// app.listen(5000, ()=>{console.log("Server on Port 5000")})
+const cors = require("cors");
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 5000
-// your code
+const PORT = process.env.PORT || 5000;
+const corsOpts = {
+  origin: '*',
 
+  methods: [
+    'GET',
+    'POST',
+  ],
 
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
 
-// Define a route that generates mock stock data
-// Define a route that generates mock stock data
+app.use(cors(corsOpts));
 app.get("/api/search", (req, res) => {
   const symbol = req.query.symbol;
   const period = req.query.period;
